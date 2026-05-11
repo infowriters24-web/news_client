@@ -7,22 +7,25 @@ import ShareButton from "@/components/ShareButton";
 
 // ✅ Dynamic SEO metadata
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const res = await fetch(`${base_url}/api/news/news/${slug}`, {
-    next: { revalidate: 5 },
-  });
+  try {
+    const { slug } = await params;
+    const res = await fetch(`${base_url}/api/news/news/${slug}`, {
+      next: { revalidate: 5 },
+    });
 
-  if (!res.ok) return { title: "সংবাদ পাওয়া যায়নি" };
+    if (!res.ok) return { title: "সংবাদ পাওয়া যায়নি" };
 
-  const data = await res.json();
-  // ফিক্স: ডাটা যেই ফরম্যাটেই আসুক না কেনো
-  const news = data.news || data;
+    const data = await res.json();
+    const news = data.news || data;
 
-  return {
-    title: news?.title || "News Details",
-    description: news?.description?.replace(/<[^>]*>/g, "").slice(0, 150),
-    openGraph: { images: [news?.image] },
-  };
+    return {
+      title: news?.title || "News Details",
+      description: news?.description?.replace(/<[^>]*>/g, "").slice(0, 150),
+      openGraph: { images: [news?.image] },
+    };
+  } catch {
+    return { title: "সংবাদ পাওয়া যায়নি" };
+  }
 }
 
 // ✅ স্লাগ অনুযায়ী সিঙ্গেল খবর আনার ফাংশন
