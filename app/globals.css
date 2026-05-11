@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+
+@theme{
+  --color-headerColor: #1F3C88;    
+  --color-btnColor: #F7941D;    
+  --color-hoverbtnColor: #B36B0F;    
+  --color-sectionColor: #eeeeee;    
+}
