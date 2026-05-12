@@ -133,7 +133,7 @@ export default function Header() {
               <Image
                 src={logo}
                 alt=" Logo"
-                width={50}
+                width={100}
                 height={44}
                 className="object-contain"
               />
