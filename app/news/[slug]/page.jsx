@@ -148,9 +148,7 @@ export default async function DetailsPage({ params }) {
                 </div>
               </div>
               <div className="flex gap-2 flex-wrap">
-                <button className="text-xs px-3 py-1.5 border border-gray-200 rounded-md text-gray-500 hover:bg-gray-50">
-                  ফেসবুক
-                </button>
+                
               <CopyButton/>
               </div>
             </div>
